@@ -1,2 +1,2 @@
 User-agent: *
-Sitemap: http://tazaki-d.github.io/sitemap.xml
+Sitemap: http://dearddd.github.io/sitemap.xml

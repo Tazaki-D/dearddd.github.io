@@ -2,67 +2,67 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Dearddd efficiency.freedom</title>
-    <link>http://tazaki-d.github.io/tags/</link>
+    <link>http://dearddd.github.io/tags/</link>
     <description>Recent content in Tags on Dearddd efficiency.freedom</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Dearddd</copyright>
     <lastBuildDate>Sat, 04 May 2019 12:43:48 +0800</lastBuildDate>
     
-	<atom:link href="http://tazaki-d.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://dearddd.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Java</title>
-      <link>http://tazaki-d.github.io/tags/java/</link>
+      <link>http://dearddd.github.io/tags/java/</link>
       <pubDate>Sat, 04 May 2019 12:43:48 +0800</pubDate>
       
-      <guid>http://tazaki-d.github.io/tags/java/</guid>
+      <guid>http://dearddd.github.io/tags/java/</guid>
       <description></description>
     </item>
     
     <item>
       <title>MVC</title>
-      <link>http://tazaki-d.github.io/tags/mvc/</link>
+      <link>http://dearddd.github.io/tags/mvc/</link>
       <pubDate>Sat, 04 May 2019 12:43:48 +0800</pubDate>
       
-      <guid>http://tazaki-d.github.io/tags/mvc/</guid>
+      <guid>http://dearddd.github.io/tags/mvc/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Spring</title>
-      <link>http://tazaki-d.github.io/tags/spring/</link>
+      <link>http://dearddd.github.io/tags/spring/</link>
       <pubDate>Sat, 04 May 2019 12:43:48 +0800</pubDate>
       
-      <guid>http://tazaki-d.github.io/tags/spring/</guid>
+      <guid>http://dearddd.github.io/tags/spring/</guid>
       <description></description>
     </item>
     
     <item>
       <title>技术</title>
-      <link>http://tazaki-d.github.io/tags/%E6%8A%80%E6%9C%AF/</link>
+      <link>http://dearddd.github.io/tags/%E6%8A%80%E6%9C%AF/</link>
       <pubDate>Sat, 04 May 2019 12:43:48 +0800</pubDate>
       
-      <guid>http://tazaki-d.github.io/tags/%E6%8A%80%E6%9C%AF/</guid>
+      <guid>http://dearddd.github.io/tags/%E6%8A%80%E6%9C%AF/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Mybatis</title>
-      <link>http://tazaki-d.github.io/tags/mybatis/</link>
+      <link>http://dearddd.github.io/tags/mybatis/</link>
       <pubDate>Fri, 03 May 2019 15:43:48 +0800</pubDate>
       
-      <guid>http://tazaki-d.github.io/tags/mybatis/</guid>
+      <guid>http://dearddd.github.io/tags/mybatis/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Mysql</title>
-      <link>http://tazaki-d.github.io/tags/mysql/</link>
+      <link>http://dearddd.github.io/tags/mysql/</link>
       <pubDate>Fri, 03 May 2019 15:43:48 +0800</pubDate>
       
-      <guid>http://tazaki-d.github.io/tags/mysql/</guid>
+      <guid>http://dearddd.github.io/tags/mysql/</guid>
       <description></description>
     </item>
     

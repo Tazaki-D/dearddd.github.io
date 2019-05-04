@@ -1,89 +1,89 @@
-<?xml-stylesheet type="text/xsl" href="http://tazaki-d.github.io/sitemap.xsl"?>
+<?xml-stylesheet type="text/xsl" href="http://dearddd.github.io/sitemap.xsl"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://tazaki-d.github.io/about/</loc>
+    <loc>http://dearddd.github.io/about/</loc>
     <lastmod>2019-05-03T21:41:52+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://tazaki-d.github.io/categories/</loc>
+    <loc>http://dearddd.github.io/categories/</loc>
     <lastmod>2019-05-04T12:43:48+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://tazaki-d.github.io/</loc>
+    <loc>http://dearddd.github.io/</loc>
     <lastmod>2019-05-04T12:43:48+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://tazaki-d.github.io/tags/java/</loc>
+    <loc>http://dearddd.github.io/tags/java/</loc>
     <lastmod>2019-05-04T12:43:48+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://tazaki-d.github.io/tags/mvc/</loc>
+    <loc>http://dearddd.github.io/tags/mvc/</loc>
     <lastmod>2019-05-04T12:43:48+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://tazaki-d.github.io/post/</loc>
+    <loc>http://dearddd.github.io/post/</loc>
     <lastmod>2019-05-04T12:43:48+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://tazaki-d.github.io/tags/spring/</loc>
+    <loc>http://dearddd.github.io/tags/spring/</loc>
     <lastmod>2019-05-04T12:43:48+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://tazaki-d.github.io/post/springmvc%E4%B9%8B%E7%BB%84%E4%BB%B6%E5%89%96%E6%9E%90/</loc>
+    <loc>http://dearddd.github.io/post/springmvc%E4%B9%8B%E7%BB%84%E4%BB%B6%E5%89%96%E6%9E%90/</loc>
     <lastmod>2019-05-04T12:43:48+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://tazaki-d.github.io/tags/</loc>
+    <loc>http://dearddd.github.io/tags/</loc>
     <lastmod>2019-05-04T12:43:48+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://tazaki-d.github.io/categories/technology/</loc>
+    <loc>http://dearddd.github.io/categories/technology/</loc>
     <lastmod>2019-05-04T12:43:48+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://tazaki-d.github.io/tags/%E6%8A%80%E6%9C%AF/</loc>
+    <loc>http://dearddd.github.io/tags/%E6%8A%80%E6%9C%AF/</loc>
     <lastmod>2019-05-04T12:43:48+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://tazaki-d.github.io/tags/mybatis/</loc>
+    <loc>http://dearddd.github.io/tags/mybatis/</loc>
     <lastmod>2019-05-03T15:43:48+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://tazaki-d.github.io/post/mybatis-1/</loc>
+    <loc>http://dearddd.github.io/post/mybatis-1/</loc>
     <lastmod>2019-05-03T15:43:48+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://tazaki-d.github.io/tags/mysql/</loc>
+    <loc>http://dearddd.github.io/tags/mysql/</loc>
     <lastmod>2019-05-03T15:43:48+08:00</lastmod>
     <priority>0</priority>
   </url>
