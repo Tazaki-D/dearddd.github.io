@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Dearddd</copyright>
-    <lastBuildDate>Sat, 04 May 2019 12:43:48 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 04 May 2019 16:43:48 +0800</lastBuildDate>
     
         <atom:link href="http://dearddd.github.io/index.xml" rel="self" type="application/rss+xml" />
     
@@ -28,6 +28,134 @@
 &lt;li&gt;&lt;a href=&#34;http://dearddd.github.io/categories/truth&#34;&gt;事实&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://dearddd.com&#34;&gt;我&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>Hugo建站过程</title>
+      <link>http://dearddd.github.io/post/hugo%E5%BB%BA%E7%AB%99%E8%BF%87%E7%A8%8B/</link>
+      <pubDate>Sat, 04 May 2019 16:43:48 +0800</pubDate>
+      
+      <guid>http://dearddd.github.io/post/hugo%E5%BB%BA%E7%AB%99%E8%BF%87%E7%A8%8B/</guid>
+      
+        <description>
+
+&lt;h1 id=&#34;1-本地操作&#34;&gt;1.本地操作&lt;/h1&gt;
+
+&lt;h2 id=&#34;1-1-hugo-安装&#34;&gt;1.1. hugo 安装&lt;/h2&gt;
+
+&lt;p&gt;可以按照官网自行操作&lt;a href=&#34;https://gohugo.io/getting-started/quick-start/&#34;&gt;QuickStart&lt;/a&gt;；&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;	brew install hugo
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;1-2-新建站点&#34;&gt;1.2. 新建站点&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;	hugo new site myhugosite
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;1-3-主题选择&#34;&gt;1.3. 主题选择&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;拥有众多theme 可供选择， 按个人喜好，下面选择一款叫做“Jane”的theme。 &lt;a href=&#34;https://themes.gohugo.io/hugo-theme-jane/&#34;&gt;jane的主页&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;1-3-1-安装theme资源&#34;&gt;1.3.1. 安装theme资源&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;	cd myhugosite
+	git clone https://github.com/xianmin/hugo-theme-jane.git --depth=1 themes/jane
+	
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;1-3-2-编写属于自己的config-toml文件&#34;&gt;1.3.2. 编写属于自己的config.toml文件&lt;/h3&gt;
+
+&lt;p&gt;可以先将jane中的示例配置copy到自己的站点下， 然后进行修改。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  cd myhugosite
+  cp themes/jane/exampleSite/config.toml ./
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;1-3-3-在站点根目录下的-content-post-下编写字节的md文件&#34;&gt;1.3.3. 在站点根目录下的 /content/post 下编写字节的md文件&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;注意：每个文章（md文件）的头部需要进行一些设置&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;---
+# Common-Defined
+title: &amp;quot;An Example Post&amp;quot;
+date: 2018-01-01T16:01:23+08:00
+lastmod: 2018-01-02T16:01:23+08:00
+draft: false
+tags: [&amp;quot;tag-1&amp;quot;, &amp;quot;tag-2&amp;quot;, &amp;quot;tag-3&amp;quot;]
+categories: [&amp;quot;index&amp;quot;]
+author: &amp;quot;xianmin&amp;quot;
+
+# User-Defined
+# You can close(false) or open(true) something for this content.
+# P.S. comment can only be closed
+comment: false
+toc: false
+# You can also define another contentCopyright
+contentCopyright: &#39;&amp;lt;a rel=&amp;quot;license noopener&amp;quot; href=&amp;quot;https://creativecommons.org/licenses/by-nc-nd/4.0/&amp;quot; target=&amp;quot;_blank&amp;quot;&amp;gt;CC BY-NC-ND 4.0&amp;lt;/a&amp;gt;&#39;
+reward: false
+mathjax: true
+---
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;1-4-站点启动&#34;&gt;1.4. 站点启动&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;	hugo server
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;1-5-访问&#34;&gt;1.5. 访问&lt;/h2&gt;
+
+&lt;p&gt;hugo server 会选择一个没有使用的端口进通信， 默认使用 1313 端口；遂访问
+&lt;a href=&#34;http://127.0.0.1:1313&#34;&gt;http://127.0.0.1:1313&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;2-生成基于github-io的个人page&#34;&gt;2. 生成基于github.io的个人page&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;以下内容均是基于github的使用，因此至少需要一个github账号以及基本的git操作能力&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;2-1-建新的仓库&#34;&gt;2.1. 建新的仓库&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;需要创建的仓库一个名为: ${github useraccount}.github.io。&lt;/strong&gt;例如我创建的仓库名为 dearddd.github.io&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://dearddd.github.io/img/githubNewRepository.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;改仓库在接下来几步中会跟本地站点目录下的public目录进行绑定，以后几步成功之后便有了个人站点：&lt;a href=&#34;https://useraccount.github.io&#34;&gt;https://useraccount.github.io&lt;/a&gt;&lt;/strong&gt;
+例如：&lt;a href=&#34;https://dearddd.github.io&#34;&gt;https://dearddd.github.io&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;2-2-使用hugo进行本地build&#34;&gt;2.2. 使用hugo进行本地build&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;在build之前去站点根目录下查看config.toml, 将baseUrl修改为：
+&lt;a href=&#34;https://useraccount.github.io/&#34;&gt;https://useraccount.github.io/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;	cd myhugosite
+	hugo
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;2-3-将站点目录下的-public-目录同步至github&#34;&gt;2.3. 将站点目录下的/public 目录同步至github&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;	cd myhugosite/public
+	git init
+	
+	注意: useraccount 为第一步在git建仓库时的account
+	git remote add origin git@github.com:useraccount/useraccount.github.io.git
+	
+	git add .
+	git commit -m &#39;init my site&#39;
+	git push -u origin master
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;2-4-访问-https-useraccount-github-io-查看个人站点&#34;&gt;2.4. 访问 &lt;a href=&#34;https://useraccount.github.io&#34;&gt;https://useraccount.github.io&lt;/a&gt; 查看个人站点&lt;/h2&gt;
+
+&lt;h1 id=&#34;3-拥有自己的站&#34;&gt;3. 拥有自己的站&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;未完结...
+&lt;/code&gt;&lt;/pre&gt;
 </description>
       
     </item>

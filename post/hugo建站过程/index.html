@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>hugo · Dearddd efficiency.freedom</title>
+  <title>Hugo建站过程 - Dearddd efficiency.freedom</title>
   
 
 <meta name="renderer" content="webkit" />
@@ -23,7 +23,8 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <meta name="author" content="Dearddd" />
-  <meta name="description" content="site" />
+  <meta name="description" content="1.本地操作 1.1. hugo 安装 可以按照官网自行操作QuickStart； brew install hugo 1.2. 新建站点 hugo new site myhugosite 1.3. 主题选择 拥有众多theme 可供选择， 按个人喜好，下面" />
+
   <meta name="keywords" content="个人主页, 技术, 读书" />
 
 
@@ -34,8 +35,7 @@
 <meta name="generator" content="Hugo 0.55.5" />
 
 
-<link rel="canonical" href="http://dearddd.github.io/tags/hugo/" />
-<link href="%7balternate%20%7bRSS%20application/rss&#43;xml%20%20index%20alternate%20%20false%20false%20true%20false%20false%200%7d%20/tags/hugo/index.xml%20http://dearddd.github.io/tags/hugo/index.xml%7d" rel="alternate" type="application/rss+xml" title="Dearddd efficiency.freedom" />
+<link rel="canonical" href="http://dearddd.github.io/post/hugo%E5%BB%BA%E7%AB%99%E8%BF%87%E7%A8%8B/" />
 
 
 
@@ -57,19 +57,27 @@
 
 
 
-<meta property="og:title" content="hugo" />
-<meta property="og:description" content="site" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="http://dearddd.github.io/tags/hugo/" />
+<meta property="og:title" content="Hugo建站过程" />
+<meta property="og:description" content="1.本地操作 1.1. hugo 安装 可以按照官网自行操作QuickStart； brew install hugo 1.2. 新建站点 hugo new site myhugosite 1.3. 主题选择 拥有众多theme 可供选择， 按个人喜好，下面" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://dearddd.github.io/post/hugo%E5%BB%BA%E7%AB%99%E8%BF%87%E7%A8%8B/" />
+<meta property="article:published_time" content="2019-05-04T16:43:48&#43;08:00"/>
+<meta property="article:modified_time" content="2019-05-04T16:43:48&#43;08:00"/>
 
-<meta property="og:updated_time" content="2019-05-04T16:43:48&#43;08:00"/>
+<meta itemprop="name" content="Hugo建站过程">
+<meta itemprop="description" content="1.本地操作 1.1. hugo 安装 可以按照官网自行操作QuickStart； brew install hugo 1.2. 新建站点 hugo new site myhugosite 1.3. 主题选择 拥有众多theme 可供选择， 按个人喜好，下面">
 
-<meta itemprop="name" content="hugo">
-<meta itemprop="description" content="site">
 
+<meta itemprop="datePublished" content="2019-05-04T16:43:48&#43;08:00" />
+<meta itemprop="dateModified" content="2019-05-04T16:43:48&#43;08:00" />
+<meta itemprop="wordCount" content="703">
+
+
+
+<meta itemprop="keywords" content="个人站点,hugo,Jane,github个人主页," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="hugo"/>
-<meta name="twitter:description" content="site"/>
+<meta name="twitter:title" content="Hugo建站过程"/>
+<meta name="twitter:description" content="1.本地操作 1.1. hugo 安装 可以按照官网自行操作QuickStart； brew install hugo 1.2. 新建站点 hugo new site myhugosite 1.3. 主题选择 拥有众多theme 可供选择， 按个人喜好，下面"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -320,45 +328,244 @@
     <main id="main" class="main bg-llight">
       <div class="content-wrapper">
         <div id="content" class="content container">
-          
-
-<section id="archive" class="archive">
-  
+          <article class="post bg-white">
     
-      <div class="archive-title tag">
-        <h2 class="archive-name">Tag: hugo</h2>
+    <header class="post-header">
+      <h1 class="post-title">Hugo建站过程</h1>
+      
+      <div class="post-meta">
+        <time datetime="2019-05-04" class="post-time">
+          2019-05-04
+        </time>
+        <div class="post-category">
+            <a href="http://dearddd.github.io/categories/technology/"> technology </a>
+            
+          </div>
+        
+
+        
+        
+
+        
+        
       </div>
+    </header>
+
     
-  
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Table of Contents</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#1-本地操作">1.本地操作</a>
+<ul>
+<li><a href="#1-1-hugo-安装">1.1. hugo 安装</a></li>
+<li><a href="#1-2-新建站点">1.2. 新建站点</a></li>
+<li><a href="#1-3-主题选择">1.3. 主题选择</a>
+<ul>
+<li><a href="#1-3-1-安装theme资源">1.3.1. 安装theme资源</a></li>
+<li><a href="#1-3-2-编写属于自己的config-toml文件">1.3.2. 编写属于自己的config.toml文件</a></li>
+<li><a href="#1-3-3-在站点根目录下的-content-post-下编写字节的md文件">1.3.3. 在站点根目录下的 /content/post 下编写字节的md文件</a></li>
+</ul></li>
+<li><a href="#1-4-站点启动">1.4. 站点启动</a></li>
+<li><a href="#1-5-访问">1.5. 访问</a></li>
+</ul></li>
+<li><a href="#2-生成基于github-io的个人page">2. 生成基于github.io的个人page</a>
+<ul>
+<li><a href="#2-1-建新的仓库">2.1. 建新的仓库</a></li>
+<li><a href="#2-2-使用hugo进行本地build">2.2. 使用hugo进行本地build</a></li>
+<li><a href="#2-3-将站点目录下的-public-目录同步至github">2.3. 将站点目录下的/public 目录同步至github</a></li>
+<li><a href="#2-4-访问-https-useraccount-github-io-查看个人站点">2.4. 访问 <a href="https://useraccount.github.io">https://useraccount.github.io</a> 查看个人站点</a></li>
+</ul></li>
+<li><a href="#3-拥有自己的站">3. 拥有自己的站</a></li>
+</ul>
+</nav>
+  </div>
+</div>
 
-  
-    <div class="archive-post">
-      <time datetime="2019-05-04" class="archive-post-time">
-        2019-05-04
-      </time>
-      <span class="archive-post-title">
-        <a href="/post/hugo%E5%BB%BA%E7%AB%99%E8%BF%87%E7%A8%8B/" class="archive-post-link">
-          Hugo建站过程
-        </a>
-      </span>
+    
+    <div class="post-content">
+      
+
+<h1 id="1-本地操作">1.本地操作</h1>
+
+<h2 id="1-1-hugo-安装">1.1. hugo 安装</h2>
+
+<p>可以按照官网自行操作<a href="https://gohugo.io/getting-started/quick-start/">QuickStart</a>；</p>
+
+<pre><code>	brew install hugo
+</code></pre>
+
+<h2 id="1-2-新建站点">1.2. 新建站点</h2>
+
+<pre><code>	hugo new site myhugosite
+</code></pre>
+
+<h2 id="1-3-主题选择">1.3. 主题选择</h2>
+
+<p><strong>拥有众多theme 可供选择， 按个人喜好，下面选择一款叫做“Jane”的theme。 <a href="https://themes.gohugo.io/hugo-theme-jane/">jane的主页</a></strong></p>
+
+<h3 id="1-3-1-安装theme资源">1.3.1. 安装theme资源</h3>
+
+<pre><code>	cd myhugosite
+	git clone https://github.com/xianmin/hugo-theme-jane.git --depth=1 themes/jane
+	
+</code></pre>
+
+<h3 id="1-3-2-编写属于自己的config-toml文件">1.3.2. 编写属于自己的config.toml文件</h3>
+
+<p>可以先将jane中的示例配置copy到自己的站点下， 然后进行修改。</p>
+
+<pre><code>  cd myhugosite
+  cp themes/jane/exampleSite/config.toml ./
+</code></pre>
+
+<h3 id="1-3-3-在站点根目录下的-content-post-下编写字节的md文件">1.3.3. 在站点根目录下的 /content/post 下编写字节的md文件</h3>
+
+<p><strong>注意：每个文章（md文件）的头部需要进行一些设置</strong></p>
+
+<pre><code>---
+# Common-Defined
+title: &quot;An Example Post&quot;
+date: 2018-01-01T16:01:23+08:00
+lastmod: 2018-01-02T16:01:23+08:00
+draft: false
+tags: [&quot;tag-1&quot;, &quot;tag-2&quot;, &quot;tag-3&quot;]
+categories: [&quot;index&quot;]
+author: &quot;xianmin&quot;
+
+# User-Defined
+# You can close(false) or open(true) something for this content.
+# P.S. comment can only be closed
+comment: false
+toc: false
+# You can also define another contentCopyright
+contentCopyright: '&lt;a rel=&quot;license noopener&quot; href=&quot;https://creativecommons.org/licenses/by-nc-nd/4.0/&quot; target=&quot;_blank&quot;&gt;CC BY-NC-ND 4.0&lt;/a&gt;'
+reward: false
+mathjax: true
+---
+
+</code></pre>
+
+<h2 id="1-4-站点启动">1.4. 站点启动</h2>
+
+<pre><code>	hugo server
+</code></pre>
+
+<h2 id="1-5-访问">1.5. 访问</h2>
+
+<p>hugo server 会选择一个没有使用的端口进通信， 默认使用 1313 端口；遂访问
+<a href="http://127.0.0.1:1313">http://127.0.0.1:1313</a></p>
+
+<h1 id="2-生成基于github-io的个人page">2. 生成基于github.io的个人page</h1>
+
+<ul>
+<li><strong>以下内容均是基于github的使用，因此至少需要一个github账号以及基本的git操作能力</strong></li>
+</ul>
+
+<h2 id="2-1-建新的仓库">2.1. 建新的仓库</h2>
+
+<p><strong>需要创建的仓库一个名为: ${github useraccount}.github.io。</strong>例如我创建的仓库名为 dearddd.github.io</p>
+
+<p><img src="/img/githubNewRepository.png" alt="" /></p>
+
+<p><strong>改仓库在接下来几步中会跟本地站点目录下的public目录进行绑定，以后几步成功之后便有了个人站点：<a href="https://useraccount.github.io">https://useraccount.github.io</a></strong>
+例如：<a href="https://dearddd.github.io">https://dearddd.github.io</a></p>
+
+<h2 id="2-2-使用hugo进行本地build">2.2. 使用hugo进行本地build</h2>
+
+<ul>
+<li><p><strong>在build之前去站点根目录下查看config.toml, 将baseUrl修改为：
+<a href="https://useraccount.github.io/">https://useraccount.github.io/</a></strong></p>
+
+<pre><code>	cd myhugosite
+	hugo
+</code></pre></li>
+</ul>
+
+<h2 id="2-3-将站点目录下的-public-目录同步至github">2.3. 将站点目录下的/public 目录同步至github</h2>
+
+<pre><code>	cd myhugosite/public
+	git init
+	
+	注意: useraccount 为第一步在git建仓库时的account
+	git remote add origin git@github.com:useraccount/useraccount.github.io.git
+	
+	git add .
+	git commit -m 'init my site'
+	git push -u origin master
+</code></pre>
+
+<h2 id="2-4-访问-https-useraccount-github-io-查看个人站点">2.4. 访问 <a href="https://useraccount.github.io">https://useraccount.github.io</a> 查看个人站点</h2>
+
+<h1 id="3-拥有自己的站">3. 拥有自己的站</h1>
+
+<pre><code>未完结...
+</code></pre>
+
     </div>
+
+    
+    
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Dearddd</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">2019-05-04</span>
+  </p>
   
-</section>
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a href="https://dearddd.com/post/springmvc之组件剖析/" rel="noopener" target="_blank">See origin</a></span>
+  </p>
+</div>
 
 
+    
+    
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">Reward</label>
+  <div class="qr-code">
+    
+    
+    
+  </div>
+</div>
 
+    <footer class="post-footer">
+      <div class="post-tags">
+          <a href="http://dearddd.github.io/tags/%E4%B8%AA%E4%BA%BA%E7%AB%99%E7%82%B9/">个人站点</a>
+          <a href="http://dearddd.github.io/tags/hugo/">hugo</a>
+          <a href="http://dearddd.github.io/tags/jane/">Jane</a>
+          <a href="http://dearddd.github.io/tags/github%E4%B8%AA%E4%BA%BA%E4%B8%BB%E9%A1%B5/">github个人主页</a>
+          
+        </div>
 
+      
+      <nav class="post-nav">
+        
+        
+          <a class="next" href="/post/springmvc%E4%B9%8B%E7%BB%84%E4%BB%B6%E5%89%96%E6%9E%90/">
+            <span class="next-text nav-default">SpringMvc之组件剖析</span>
+            <span class="prev-text nav-mobile">Next</span>
+            
+            <i class="iconfont">
+              <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
 
-
-  
-  
-  
-
-  
-  
-
-  
-  
+            </i>
+          </a>
+      </nav>
+    </footer>
+  </article>
 
   
   
@@ -366,7 +573,16 @@
   
   
 
+  
+  
 
+  
+
+  
+
+  
+  
+    
 
 
 
