@@ -7,19 +7,10 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Dearddd</copyright>
-    <lastBuildDate>Sat, 04 May 2019 12:43:48 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 03 May 2019 15:43:48 +0800</lastBuildDate>
     
 	<atom:link href="http://dearddd.github.io/categories/technology/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>SpringMvc之组件剖析</title>
-      <link>http://dearddd.github.io/post/springmvc%E4%B9%8B%E7%BB%84%E4%BB%B6%E5%89%96%E6%9E%90/</link>
-      <pubDate>Sat, 04 May 2019 12:43:48 +0800</pubDate>
-      
-      <guid>http://dearddd.github.io/post/springmvc%E4%B9%8B%E7%BB%84%E4%BB%B6%E5%89%96%E6%9E%90/</guid>
-      <description>本文基础逻辑引自《看透springmvc》 此文基于对DispatchServlet中包含的九大组件的分析来学习SpringMvc对一个请求的</description>
-    </item>
     
     <item>
       <title>Mybatis之框架分析</title>

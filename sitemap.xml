@@ -39,6 +39,12 @@
   </url>
   
   <url>
+    <loc>http://dearddd.github.io/categories/spring/</loc>
+    <lastmod>2019-05-04T12:43:48+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://dearddd.github.io/tags/spring/</loc>
     <lastmod>2019-05-04T12:43:48+08:00</lastmod>
     <priority>0</priority>
@@ -53,12 +59,6 @@
   
   <url>
     <loc>http://dearddd.github.io/tags/</loc>
-    <lastmod>2019-05-04T12:43:48+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://dearddd.github.io/categories/technology/</loc>
     <lastmod>2019-05-04T12:43:48+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -84,6 +84,12 @@
   
   <url>
     <loc>http://dearddd.github.io/tags/mysql/</loc>
+    <lastmod>2019-05-03T15:43:48+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://dearddd.github.io/categories/technology/</loc>
     <lastmod>2019-05-03T15:43:48+08:00</lastmod>
     <priority>0</priority>
   </url>
