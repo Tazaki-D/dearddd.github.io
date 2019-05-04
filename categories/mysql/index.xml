@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mysql on Dearddd efficiency.freedom</title>
+    <link>http://tazaki-d.github.io/categories/mysql/</link>
+    <description>Recent content in Mysql on Dearddd efficiency.freedom</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>Dearddd</copyright>
+    <lastBuildDate>Fri, 03 May 2019 15:43:48 +0800</lastBuildDate>
+    
+	<atom:link href="http://tazaki-d.github.io/categories/mysql/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Mybatis之框架分析</title>
+      <link>http://tazaki-d.github.io/post/mybatis-1/</link>
+      <pubDate>Fri, 03 May 2019 15:43:48 +0800</pubDate>
+      
+      <guid>http://tazaki-d.github.io/post/mybatis-1/</guid>
+      <description>Mybatis结构 Mybatis 框架结构图（引用） 事务管理模块 MyBatis作为Java语言的数据库框架，对数据库的事务管理是其非常重要的一个方面。本文</description>
+    </item>
+    
+  </channel>
+</rss>

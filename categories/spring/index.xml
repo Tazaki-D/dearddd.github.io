@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Spring on Dearddd efficiency.freedom</title>
+    <link>http://tazaki-d.github.io/categories/spring/</link>
+    <description>Recent content in Spring on Dearddd efficiency.freedom</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>Dearddd</copyright>
+    <lastBuildDate>Sat, 04 May 2019 12:43:48 +0800</lastBuildDate>
+    
+	<atom:link href="http://tazaki-d.github.io/categories/spring/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>SpringMvc之组件剖析</title>
+      <link>http://tazaki-d.github.io/post/springmvc%E4%B9%8B%E7%BB%84%E4%BB%B6%E5%89%96%E6%9E%90/</link>
+      <pubDate>Sat, 04 May 2019 12:43:48 +0800</pubDate>
+      
+      <guid>http://tazaki-d.github.io/post/springmvc%E4%B9%8B%E7%BB%84%E4%BB%B6%E5%89%96%E6%9E%90/</guid>
+      <description>本文基础逻辑引自《看透springmvc》 此文基于对DispatchServlet中包含的九大组件的分析来学习SpringMvc对一个请求的</description>
+    </item>
+    
+  </channel>
+</rss>

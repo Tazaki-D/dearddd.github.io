@@ -1,0 +1,491 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Dearddd efficiency.freedom</title>
+    <link>http://tazaki-d.github.io/</link>
+    <description>Recent content on Dearddd efficiency.freedom</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>Dearddd</copyright>
+    <lastBuildDate>Sat, 04 May 2019 12:43:48 +0800</lastBuildDate>
+    
+        <atom:link href="http://tazaki-d.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>About</title>
+      <link>http://tazaki-d.github.io/about/</link>
+      <pubDate>Fri, 03 May 2019 21:38:52 +0800</pubDate>
+      
+      <guid>http://tazaki-d.github.io/about/</guid>
+      
+        <description>&lt;p&gt;efficiency.freedom.NoSilverBullet&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://tazaki-d.github.io/categories/technology/&#34;&gt;技术&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://tazaki-d.github.io/categories/thoughts&#34;&gt;阅读手记&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://tazaki-d.github.io/categories/new&#34;&gt;新鲜事物&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://tazaki-d.github.io/categories/truth&#34;&gt;事实&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://dearddd.com&#34;&gt;我&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>SpringMvc之组件剖析</title>
+      <link>http://tazaki-d.github.io/post/springmvc%E4%B9%8B%E7%BB%84%E4%BB%B6%E5%89%96%E6%9E%90/</link>
+      <pubDate>Sat, 04 May 2019 12:43:48 +0800</pubDate>
+      
+      <guid>http://tazaki-d.github.io/post/springmvc%E4%B9%8B%E7%BB%84%E4%BB%B6%E5%89%96%E6%9E%90/</guid>
+      
+        <description>
+
+&lt;p&gt;&lt;strong&gt;本文基础逻辑引自《看透springmvc》&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;此文基于对DispatchServlet中包含的九大组件的分析来学习SpringMvc对一个请求的处理流程。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;1-handlermapping-分析&#34;&gt;1. HandlerMapping 分析&lt;/h1&gt;
+
+&lt;p&gt;1、 HandlerMapping - spring web servlet；spring web reactive&lt;/p&gt;
+
+&lt;p&gt;2、AbstractHandleMapping
+ AbstractHandlerMethodMapping
+ RequestMapingInfoHandleMapping
+ RequestMappingHandlerMapping&lt;/p&gt;
+
+&lt;p&gt;@RequestMapping 所注释的方法&lt;/p&gt;
+
+&lt;p&gt;RequestMappingInfo 属性为何全都是final的
+ AbstractHandlerMethodMapping 中
+ crosMapping？
+ mapping
+ nameMapping
+ url-mapping 之间的映射关系存储
+ handler大多数时候是handler mehtod 所在的类，handlerMethod
+ 是一个url的真是的处理逻辑， 也就是平时Controller里的一个方法&lt;/p&gt;
+
+&lt;p&gt;初始化在 AbstractHandleMapping 的afterPropSet方法里触发&lt;/p&gt;
+
+&lt;p&gt;AbstractUrlHandlerMapping
+主要结构是 一个通过url，Handler构成的Mappper
+handler 的注册由子类完成
+init在实现父类的init方法中完后&lt;/p&gt;
+
+&lt;p&gt;AbstractHandlerMapping
+中实现了对Interceptor的管理， handler的管理交给了具体的子类
+init 触发点在于对AbstractHandlerMapping 的 initApplicationContext 的实现；
+对外的公共方法是：
+public final HandlerExecutionChain getHandler(HttpServletRequest request) throws Exception；&lt;/p&gt;
+
+&lt;h1 id=&#34;2-handleradapter-分析&#34;&gt;2. HandlerAdapter 分析&lt;/h1&gt;
+
+&lt;p&gt;3、 handlerAdapter 对外提供的三个方法
+    boolean supports(Object handler);
+    ModelAndView handle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception;
+    long getLastModified(HttpServletRequest request, Object handler);&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;判断当前的Adapter是否支持该handler
+处理请求
+。。。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;3.1 RequestMappingHandlerAdapter 重点分析&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;RequestMappingHandlerAdapter 中方法 1） 3）实现简单， 没有可研究的；
+方法2）：
+    参数绑定
+        当前处理请求的handler
+        @ModelAttribte
+        @InitBinder
+    参数来源：
+        Request的相关参数
+        @ModelAttribute
+        @SeesionAttribute
+        Session
+        Cookie
+        FlashMap（主要用于redirect）
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;webdataBinder 作用&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;ControllerAdvice 注解
+ResponeseBodyAdvice 接口 实现可以在 json responese 请求前中后未知插入处理逻辑&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;HandlerMethonArgumentResolver 用来绑定 HandlerMethon所需的参数；
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;RequestMappingHandlerAdapter 创建过程
+    1、  初始化argumentResolver
+        initBinderargumentResolver
+        returnValueHandler&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    @ControllerAdvice相关的
+    modelAttributeAdviceCache
+    initBinderAdviceCache
+    responseBodyAdvice
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;getDefaultXXX XXXComposite&lt;/p&gt;
+
+&lt;p&gt;RequestMappingHandlerAdapter 里的 customArgumentResolvers 是用户可以自动注入的自定义参数解析器&lt;/p&gt;
+
+&lt;p&gt;WebDataBinderFactory 用来处理 @InitBinder&lt;/p&gt;
+
+&lt;p&gt;WebDataBinderFactory
+ModelFactory（WebDataBinderFactory ModelAttribute Session&amp;hellip;)
+以上二者在处理过程中都是先处理全局的， 再处理自己的&lt;/p&gt;
+
+&lt;p&gt;SessionAttributesHandler 是用来处理 @SessionAttribute 对应的内容的， 主要有以下几个属性&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;private final Set&amp;lt;String&amp;gt; attributeNames = new HashSet&amp;lt;&amp;gt;();
+
+private final Set&amp;lt;Class&amp;lt;?&amp;gt;&amp;gt; attributeTypes = new HashSet&amp;lt;&amp;gt;();
+
+private final Set&amp;lt;String&amp;gt; knownAttributeNames = Collections.newSetFromMap(new ConcurrentHashMap&amp;lt;&amp;gt;(4));
+
+private final SessionAttributeStore sessionAttributeStore;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;其中：
+    attributeNames 用来标识 改HandlerMethod 上 @SessionAttribute对应的value， 即name；
+    attributeTypes 用来标识类型；
+    knownAttributeNames 用来标识handler 所使用过的所有Attribute name；&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;SessionAttributeStore 是用来执行具体处理操作的工具类
+    主要有以下几个方法：
+public void storeAttribute(WebRequest request, String attributeName, Object attributeValue)；
+public Object retrieveAttribute(WebRequest request, String attributeName)；
+public void cleanupAttribute(WebRequest request, String attributeName)；
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;*注意： 根据name获取对应的Attribute 值 不光是在当前handler相关的SessionAttributeHandler中查找， 是需要在全局的SessionValue 中查找；
+* request.setAttribute 只有在scope 是request时才会将参数设置在request里， 其余时候都将设置到session中；&lt;/p&gt;
+
+&lt;p&gt;ModelAndViewContainer 主要作用：
+    保存Model and View
+    请求过程中承担着数据传递工作&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;主要以下几种属性:
+    view
+    defaultModel （* SessionAttribute只跟Default驶入绑在一起）
+    redirectModel
+  以下都是bool 值
+    sessionStatus 用于设置SessionAttribute使用完的标志
+    requestHandled 用于标识请求已经处理完， 比如@ResponeseBody 请求在model处理完成呢过之后...
+
+    redirectModelScenario 处理器返回redirectModel的标识
+    ignoreDefaultModelOnRedirect 处理器返回处理器返回redirect视图时， 是否可以使用Default视图的标识
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tazaki-d.github.io/img/MAVContainer.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;下文称“ModelAndViewContainer” mv&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;RequestMappingHandlerAdapter 的 invokeInternalMethod 中，
+在ModelFactory创建之前， FlashMap中的值已被移到mv中；
+ModelFactory 是用来维护好Model的， 包含两个功能：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;初始化Model
+     a) 获取@SessionAttbute 对Model的变更， 记录到 mv
+     b) 获取@ModelAttribute 对Model的变更， 记录到mv
+     c) 获取既被@SessionAttribute限制， 又有@ModelAttribute注释的值到mv
+处理器执行完成后将Model中相应的值更新到SessionAttributes中
+    该方法的执行在invoke结束前， 基本上是invoke的收尾动作了(getModelView()方法)
+    a）SessionAttribute 随着SessionStatus的变更进行清空等状态更新动作
+    b) 对需要View进行渲染的model进项bindResult
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;@Validate 的操作是 ModelAttributeMethodProcessor进行处理的；ModelAttributeMethodProcessor 实现了MehodArgumentResolver 以及 ReturnValueHandler;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;handlermethod&#34;&gt;HandlerMethod：&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tazaki-d.github.io/img/MethodInvoker.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;HandlerMethod 有如下重要属性：&lt;/p&gt;
+
+&lt;p&gt;BeanFactory， 主要是用于Handler是String类型时， 寻找对应的beanmethod
+bridgedMethod 被桥的方法
+params method 对应的参数进行了封装， 具体的属性可以对照代码&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;InvocableHandlerMethod 就是在HandlerMethod基础上增加了可调用的方法&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;public Object invokeForRequest(NativeWebRequest request,    ModelAndViewContainer mavContainer,Object... providedArgs)  throws Exception;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;具体的执行过程主要分以下几步：
+    1、使用argumentResolvers 解析参数
+    2、使用bridgedMethod进行invoke&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;ServletInvocableHandlerMethod 主要是 InvocableHandlerMethod的基础上完成以下功能：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;a) 对 @ResponeseStatus 进行支持，该注解用于处理器方法以及返回值上， 作用是对返回的Status进行设置， 平时应用很少；
+b) 对返回值进行处理， 该处理过程有returnValueHandlers完后， 是HandlerMethodReturnValueHandler 类型；
+c) 对异步返回结果进行处理
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;handlermethodargumentresolver-用于解析参数-里面有两个重要方法&#34;&gt;HandlerMethodArgumentResolver 用于解析参数， 里面有两个重要方法：&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;     boolean supportsParameter(MethodParameter parameter);
+
+     Object resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer,  NativeWebRequest webRequest, WebDataBinderFactory binderFactory) throws Exception;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;该接口子类众多-此处分析部分&#34;&gt;该接口子类众多，此处分析部分：&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;ModelMethodProcessor 用于解析Model类型的参数&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;注意： A {@link Model} return type has a set purpose. Therefore this handler should be configured ahead of handlers that support any return value type annotated with {@code @ModelAttribute} or {@code @ResponseBody} to ensure they don&amp;rsquo;t take over.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;PathVariableMethodArgumentResolver&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;PathVariableMethodArgumentResolver 继承于 AbstractNamedValueMethodArgumentResolver&lt;/p&gt;
+
+&lt;p&gt;AbstractNamedValueMethodArgumentResolver 的定位：&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Abstract base class for resolving method arguments from a named   value. Request parameters, request headers, and path variables are examples of named values. Each may have a name, a required flag, and a default value.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;该类只以模板模式实现了resolveArgument方法， 该方法主要步骤如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;a) getNameValueInfo 通过参数获取NameValueInfo，此处用到了下面这个cache
+private final Map&amp;lt;MethodParameter, NamedValueInfo&amp;gt; namedValueInfoCache = new ConcurrentHashMap&amp;lt;&amp;gt;(256);
+    NameValueInfo主要包含了：
+        是否是必需-required
+        默认值 defaultValue
+        在Request中的name
+b）Object arg = resolveName(resolvedName.toString(), nestedParameter, webRequest);
+主要 用于解析参数
+c）resolveDefaultValue
+     在 b)中解析如果是null 或者 required=true时arg=empty时， 进行默认值解析
+d) handleMissingValue
+    模板方法， 具体实现在子类中 值为null时， 进行解析
+e) handleNullValue
+    在handleMissingValue方法之后执行， 如果handleMissingValue已经抛出了异常， 则不用执行
+    模板方法， 具体实现在子类中 值为null时， 进行解析
+    如果parmType is Boolean， 则arg处理为False；如果parmType为其他基础类型， 则跑异常；
+f) handleResolvedValue
+    模板方法， 用于处理解析出的参数；
+    在PathVariableMethodArgumentResolver中该方法是将解析出的args设置到了request的Attributes中了， 以便后面使用；
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;3-viewresolver&#34;&gt;3. ViewResolver&lt;/h1&gt;
+
+&lt;h2 id=&#34;概述&#34;&gt;概述&lt;/h2&gt;
+
+&lt;p&gt;作用： 根据视图名和Locale解析出视图， 解析过程主要做两件事情：解析出使用模板文件和视图的类型。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;写在前面&lt;/strong&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;ViewResolvers 的初始化过程在DispatchServlet中， view 的相关处理也在DispatchServlet中触发&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;不是所有的请求都会用到ViewResolver， 只有当处理器返回的view是String类型才需要使用它来解析&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;View.render() 方法用于将解析好的数据写回到Responese中&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;重点类分析&#34;&gt;重点类分析：&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;ContentNegotiatingViewResolver&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;在别的解析器的作用上怎个加了对MediaType和后缀的支持；
+主要属性： viewResolvers, viewResolvers 既可以用自动加载Spring容器中的内容， 也可以手动设置；
+解析过程： 先用每个Resolver进行解析， 然后从中选出最优的；
+具体过程分别在： resolveViewName getBestView
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;AbstractCachingViewResolver&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;提供了统一的缓存能力， 当视图被解析过一次之后就缓存起来，直到缓存被删除。
+主要子类分析：
+    ResourceBundleViewResolver： 通过使用properties属性文件解析视图；
+    XmlViewResolver： 通过Xml进行解析视图；
+    UrlBasedViewResolver：直接将逻辑视图作为url查找模板文件的ViewResolver的基类， 设置了统一查找模板的规则， 他的子类只需要确定渲染方式也就是视图类型即可。
+
+实现细节要点：在AbstractCachingViewResolver内部， 有两个Map做缓存，分别是viewAccessCache 和 viewCreationCache， 前者是ConcurrentHashMap， 后者是 LinkedHashMap（有自动删除功能， 详见RemoveEldestEntry）
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;BeanNameViewResolver 使用viewName 直接获取View&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;ViewResolverComposite， 跟之前接触过的Composite类一样， 他只是调度组装其他的ViewResolver&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;其他&#34;&gt;其他&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;RequestContextHolder 的作用&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;4-requesttoviewnametranslator分析&#34;&gt;4.RequestToViewNameTranslator分析&lt;/h1&gt;
+
+&lt;h2 id=&#34;概述-1&#34;&gt;概述&lt;/h2&gt;
+
+&lt;p&gt;作用：从Request中解析出ViewName的Translator，在HandlerAdapter返回的view为空时使用， 触发点在DispatchServlet中HandleRAdapter处理结束之后。&lt;/p&gt;
+
+&lt;h2 id=&#34;主要方法&#34;&gt;主要方法&lt;/h2&gt;
+
+&lt;p&gt;String getViewName(HttpServletRequest request) throws Exception;&lt;/p&gt;
+
+&lt;p&gt;默认实现类： DefaultRequestToViewNameTranslator&lt;/p&gt;
+
+&lt;h1 id=&#34;5-handlerexceptionresolver分析&#34;&gt;5. HandlerExceptionResolver分析&lt;/h1&gt;
+
+&lt;p&gt;##概述
+主要用于处理处理过程中的异常， 触发点在DispatchServlet中的DispatchResult方法；
+核心方法：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;   ModelAndView resolveException(
+        HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;##核心类分析&lt;/p&gt;
+
+&lt;h1 id=&#34;6-multipartresolver分析&#34;&gt;6. MultipartResolver分析&lt;/h1&gt;
+
+&lt;h2 id=&#34;概述-2&#34;&gt;概述&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;用于 处理上请求， 有两个实现类： StandardServletMultipartResolver 和 Commons MultipartResolver。&lt;/li&gt;
+&lt;li&gt;核心方法：public MultipartHttpServletRequest resolveMultipart(HttpServletRequest request) throws MultipartException。&lt;/li&gt;
+&lt;li&gt;前者使用了Servlet3.0的标准上传方式，后者使用A怕吃个的commons-fileupload上传方式。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;重点类分析-1&#34;&gt;重点类分析&lt;/h2&gt;
+
+&lt;h3 id=&#34;standardservletmultipartresolver&#34;&gt;StandardServletMultipartResolver&lt;/h3&gt;
+
+&lt;p&gt;核心方法就是将HttpServletRequest包装成StandardMultipartHttpServletRequest，其中，isMultipart会判断是不是上传请求（主要逻辑是: 判断是不是post请求， 然后判断contentType 是不是以 multipart 打头）；&lt;/p&gt;
+
+&lt;h3 id=&#34;commonsmultipartresolver&#34;&gt;CommonsMultipartResolver&lt;/h3&gt;
+
+&lt;p&gt;CommonsMultipartResolver使用了 commons-fileupload 来完成具体的上传操作， 将HttpServletRequest解析成DefaultMultipartHttpServletRequest。&lt;/p&gt;
+
+&lt;h1 id=&#34;7-localeresolver分析&#34;&gt;7. LocaleResolver分析&lt;/h1&gt;
+
+&lt;p&gt;##概述
+* LocaleResolver 的作用是从request中解析出Locale（Locale在ViewResolver中有用到）&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;核心方法：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Locale resolveLocale(HttpServletRequest request);
+void setLocale(HttpServletRequest request, HttpServletResponse response, Locale locale);
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;核心类&#34;&gt;核心类&lt;/h2&gt;
+
+&lt;h3 id=&#34;结构&#34;&gt;结构&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tazaki-d.github.io/img/LocaleResolver.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;1、  AcceptHeaderLocaleResolver 是根据request header 里的accept-language去判断 locale的， 这个解析类无法对locale进行set操作&lt;/p&gt;
+
+&lt;p&gt;2、 LocaleContextResolver （Extension of {@link LocaleResolver}, adding support for a rich locale context (potentially including locale and time zone information).）， 提供了可供扩展的内容。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;AbstractLocaleResolver 提供了defaultLocale。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;2.1 AbstractLocaleContextResolver 是 包含了默认时区。 他的继承类中，FixedLocaleResolver无法修改locale，只能读取；SessionLocaleResolver可以以Session为介质对Locale进行读写操作。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;CookieLocalResolver 由于需要继承CookieGenerator， 所以无法继承上述A。他跟SessionLocaleResolver实现功能类似， 只是以Cookie为存取介质。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;8-themeresolver分析&#34;&gt;8. ThemeResolver分析&lt;/h1&gt;
+
+&lt;h2 id=&#34;概述-3&#34;&gt;概述&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;作用：从request中解析出ThemeName。&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;核心待子类实现方法：&lt;/p&gt;
+
+&lt;p&gt;String resolveThemeName(HttpServletRequest request);
+void setThemeName(HttpServletRequest request, HttpServletResponse response, String themeName);&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;核心类分析&#34;&gt;核心类分析&lt;/h2&gt;
+
+&lt;h3 id=&#34;结构-1&#34;&gt;结构&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tazaki-d.github.io/img/ThemeResolver.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;这个结构简单， 跟之前分析LocaleResolver类似， 代码分析即可。&lt;/p&gt;
+
+&lt;h1 id=&#34;9-flashmapmanager分析&#34;&gt;9. FlashMapManager分析&lt;/h1&gt;
+
+&lt;h2 id=&#34;概述-4&#34;&gt;概述&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;FlashMapManager用来管理FlashMap， FlashMap用于在redirect时传递参数，出发逻辑在HandlerAdapater 中进行handle 请求时。&lt;/li&gt;
+&lt;li&gt;Session 中保存是一个List&lt;FlashMap&gt;, 每个FalshMap是一套redirect参数；&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;FlashMap 继承于HashMap，除此之外， 还记录以下几个属性：
+    targetRequestPath 跳转目标地址
+    MultiValueMap&lt;String, String&gt; targetRequestParams url对应的参数
+    expirationTime = -1 过期时间&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;子类需要实现的核心方法&lt;/p&gt;
+
+&lt;p&gt;```
+FlashMap retrieveAndUpdate(HttpServletRequest request, HttpServletResponse response);
+void saveOutputFlashMap(FlashMap flashMap, HttpServletRequest request, HttpServletResponse response);&lt;/p&gt;
+
+&lt;h2 id=&#34;核心类分析-1&#34;&gt;核心类分析&lt;/h2&gt;
+
+&lt;h3 id=&#34;类结构&#34;&gt;类结构&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tazaki-d.github.io/img/FalshMapManager.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;由于类结构比较简单， 实现细节查阅代码， 后面补充。。。&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>Mybatis之框架分析</title>
+      <link>http://tazaki-d.github.io/post/mybatis-1/</link>
+      <pubDate>Fri, 03 May 2019 15:43:48 +0800</pubDate>
+      
+      <guid>http://tazaki-d.github.io/post/mybatis-1/</guid>
+      
+        <description>
+
+&lt;h1 id=&#34;mybatis结构&#34;&gt;Mybatis结构&lt;/h1&gt;
+
+
+
+&lt;div class=&#34;box&#34;&gt;
+&lt;figure  itemprop=&#34;associatedMedia&#34;
+  itemscope itemtype=&#34;http://schema.org/ImageObject&#34; &gt;
+    &lt;div class=&#34;img&#34;&gt;
+      &lt;img itemprop=&#34;thumbnail&#34; src=&#34;http://tazaki-d.github.io/img/MybatisFramework.png&#34; /&gt;
+    &lt;/div&gt;
+    &lt;a href=&#34;http://tazaki-d.github.io/img/MybatisFramework.png&#34; itemprop=&#34;contentUrl&#34;&gt;&lt;/a&gt;
+      &lt;figcaption&gt;&lt;h4&gt;Mybatis 框架结构图（引用）&lt;/h4&gt;
+      &lt;/figcaption&gt;
+  &lt;/figure&gt;
+&lt;/div&gt;
+
+
+&lt;h2 id=&#34;事务管理模块&#34;&gt;事务管理模块&lt;/h2&gt;
+
+&lt;p&gt;MyBatis作为Java语言的数据库框架，对数据库的事务管理是其非常重要的一个方面。本文将讲述MyBatis的事务管理的实现机制。首先介绍MyBatis的事务Transaction的接口设计以及其不同实现JdbcTransaction 和 ManagedTransaction；接着，从MyBatis的XML配置文件入手，讲解MyBatis事务工厂的创建和维护，进而阐述了MyBatis事务的创建和使用；最后分析JdbcTransaction和ManagedTransaction的实现和二者的不同特点。&lt;/p&gt;
+</description>
+      
+    </item>
+    
+  </channel>
+</rss>
